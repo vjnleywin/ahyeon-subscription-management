@@ -15,7 +15,7 @@ type Payment = {
   id: string;
   user_id: string;
   billing_month: string;
-  amount: number;
+  amount: 47;
   method: string;
   status: string;
   reference_note: string | null;
@@ -126,7 +126,7 @@ export default function PaymentsPage() {
           `${new Date().getFullYear()}-${String(
             new Date().getMonth() + 1
           ).padStart(2, "0")}-01`,
-        amount: Number(amount),
+        amount: 47,
         method,
         status: "pending",
         reference_note: reference || null,
@@ -280,21 +280,16 @@ export default function PaymentsPage() {
                     </select>
                   </div>
 
-                  <div>
-                    <label className="block text-xs text-[#aaa] mb-2">
-                      Amount (PHP)
-                    </label>
+                    <div>
 
-                    <input
-                      type="number"
-                      min="0.01"
-                      step="0.01"
-                      value={amount}
-                      onChange={(e) => setAmount(e.target.value)}
-                      required
-                      className="w-full bg-[#090909] border border-[#303030] p-3 text-sm outline-none focus:border-[#1DB954]"
-                    />
-                  </div>
+                        <label className="block text-xs text-[#aaa] mb-2">
+                            Monthly Fee (Amount: PHP)
+                        </label>
+
+                        <div className="w-full rounded-lg border border-white/10 bg-[#151515] px-4 py-3 text-white">
+                            ₱47.00
+                        </div>
+                    </div>
 
                   <div>
                     <label className="block text-xs text-[#aaa] mb-2">
@@ -307,22 +302,8 @@ export default function PaymentsPage() {
                       className="w-full bg-[#090909] border border-[#303030] p-3 text-sm outline-none focus:border-[#1DB954]"
                     >
                       <option value="gcash">GCash</option>
-                      <option value="card">Card</option>
+                      <option value="cash">Cash</option>
                     </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs text-[#aaa] mb-2">
-                      Reference Note (Optional)
-                    </label>
-
-                    <input
-                      type="text"
-                      value={reference}
-                      onChange={(e) => setReference(e.target.value)}
-                      placeholder="Payment reference"
-                      className="w-full bg-[#090909] border border-[#303030] p-3 text-sm outline-none focus:border-[#1DB954]"
-                    />
                   </div>
 
                   <button
